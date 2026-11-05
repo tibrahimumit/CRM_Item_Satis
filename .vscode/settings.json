@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.wrangler": true,
+    "**/node_modules": true
+  },
+  "javascript.preferences.importModuleSpecifier": "relative"
+}

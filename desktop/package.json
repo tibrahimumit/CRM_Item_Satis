@@ -1,0 +1,31 @@
+{
+  "name": "crm-redirect-desktop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mac masaüstü kabuğu — CRM admin paneli",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --mac --dir",
+    "dist": "electron-builder --mac"
+  },
+  "build": {
+    "appId": "online.salediscount.crm",
+    "productName": "CRM Item Satis",
+    "mac": {
+      "category": "public.app-category.business",
+      "identity": null,
+      "target": ["dmg", "zip"]
+    },
+    "dmg": {
+      "title": "CRM Item Satis"
+    },
+    "directories": {
+      "output": "dist"
+    }
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  }
+}

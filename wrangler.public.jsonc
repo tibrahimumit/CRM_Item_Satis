@@ -1,0 +1,46 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "crm-redirect-intelligence",
+  "main": "src/worker-public.js",
+  "compatibility_date": "2025-05-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+
+  "observability": {
+    "enabled": true
+  },
+
+  "assets": {
+    "directory": "src/public-customer",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+
+  "vars": {
+    "APP_NAME": "Redirect Intelligence",
+    "PUBLIC_BASE_URL": "https://links.salediscount.online",
+    "EMAIL_DRIVER": "auto",
+    "EMAIL_FROM": "noreply@salediscount.online",
+    "EMAIL_FROM_NAME": "Redirect Intelligence",
+    "ACCESS_TOKEN_TTL_SECONDS": "604800",
+    "ACCESS_TOKEN_PENDING_DAYS": "90",
+    "ANALYTICS_RETENTION_DAYS": "90"
+  },
+
+  "kv_namespaces": [
+    { "binding": "LINKS", "id": "b2419f23d78a466f8c804bef7ec1cc9f" },
+    { "binding": "CATEGORIES", "id": "1062601688134a6f8c92819fa9783903" },
+    { "binding": "CUSTOMERS", "id": "3692c90bcd2941af96089c77737fe6aa" },
+    { "binding": "LEADS", "id": "ed012e4876604d7eb7ab5ceb6aa5b1db" },
+    { "binding": "ANALYTICS", "id": "2a88965fb4694a37b6bf12f244864706" },
+    { "binding": "EMAIL_QUEUE", "id": "2c53ebd1cb394622b3abe53bc2ef4568" },
+    { "binding": "AUTOMATIONS", "id": "61ddaa55e282447f8ae8e34839e4a498" },
+    { "binding": "LIFECYCLES", "id": "f51d72dafc6a46efa65df7995dbf35fa" },
+    { "binding": "SESSIONS", "id": "579337660c9346f7880d0af06f3f5ef8" }
+  ],
+  "routes": [
+    { "pattern": "links.salediscount.online/*", "zone_name": "salediscount.online" },
+    { "pattern": "link.salediscount.online/*", "zone_name": "salediscount.online" },
+    { "pattern": "go.salediscount.online/*", "zone_name": "salediscount.online" }
+  ],
+}

@@ -1,0 +1,30 @@
+{
+  "name": "crm-redirect-intelligence",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SaaS-style CRM + redirect cloaking + analytics + lead capture + email automation on Cloudflare Workers.",
+  "type": "module",
+  "main": "src/worker.js",
+  "scripts": {
+    "sync:assets": "cp src/public/dashboard.js src/public-admin/ && cp src/public/styles.css src/public-admin/ && cp src/public/lead.js src/public-customer/ && cp src/public/styles.css src/public-customer/",
+    "dev": "wrangler dev",
+    "dev:public": "wrangler dev -c wrangler.public.jsonc --port 8788",
+    "deploy": "npm run sync:assets && wrangler deploy && wrangler deploy -c wrangler.public.jsonc",
+    "deploy:admin": "npm run sync:assets && wrangler deploy",
+    "deploy:public": "npm run sync:assets && wrangler deploy -c wrangler.public.jsonc",
+    "setup:public-domain": "node scripts/setup-public-domain.mjs",
+    "verify:public": "node scripts/verify-public-domain.mjs",
+    "secrets:resend": "npx wrangler secret put RESEND_API_KEY && npx wrangler secret put RESEND_API_KEY -c wrangler.public.jsonc",
+    "tail": "wrangler tail",
+    "tail:public": "wrangler tail -c wrangler.public.jsonc",
+    "kv:create": "node scripts/create-kv.mjs",
+    "check": "node scripts/check-syntax.mjs",
+    "lint": "npm run check",
+    "app": "./start-app.command",
+    "desktop": "cd desktop && npm install && npm start",
+    "desktop:dist": "cd desktop && npm install && npm run dist"
+  },
+  "devDependencies": {
+    "wrangler": "^3.90.0"
+  }
+}

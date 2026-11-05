@@ -1,0 +1,21 @@
+# Local development secrets. Copy to .dev.vars and fill in.
+# DO NOT commit .dev.vars (it is in .gitignore).
+#
+# For production use `wrangler secret put <NAME>`.
+
+# Optional environment-based admin login. Leave both empty to create the
+# first local admin account through /admin/setup.
+ADMIN_EMAIL=
+ADMIN_PASSWORD=
+
+# Legacy token login (optional; leave empty for normal local setup)
+ADMIN_TOKEN=
+
+# Pepper for hashing emails / building stable indexes. Rotate carefully.
+HASH_PEPPER=change-me-too
+
+# Resend API key (only required when EMAIL_DRIVER=resend).
+RESEND_API_KEY=
+
+# OpenAI — Admin → Automations → "OpenAI ile şablon üret"
+OPENAI_API_KEY=
